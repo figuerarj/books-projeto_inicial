@@ -9,14 +9,26 @@ function exibirOsLivrosNaTela(listaDeLivros){
   //percorre cada array da varivel -livros- buscando os dados 
     //depois que tiver os dados ele monta a div para ser inserida dentro da section -livros-
     listaDeLivros.forEach(livro => {
-        
+      //faremos a verificacao se o livro esta diponivel antes de tudo.
+      //let disponibilidade = verificardisponibilidadeDoLivro(livro)       
       //inseri dentro da section -livros- todas as arrays que ele percorrer
-        elementoParaInserirLivros.innerHTML += 
+      
+      // aqui foi colocando um metodo ternario.
+      // ele faz exatamente oque o if faz porém de forma bem reduzida.
+      let disponibilidade = livro.quantidade > 0 ? 'livro__imagens' : 'livro__imagens indisponivel'
+
+      
+      elementoParaInserirLivros.innerHTML += 
         //essa é a estrutura que ele irá montar e enviar para a section -livros-
         // -livro- é o indice do array.
+
+      
+
+        // usando a function verificardisponibilidadeDoLivro:
+        // nós agora alteramos o valor dentro da TAG img inserimos a variavel que terá o valor da classe, dependendo da reposta do if.
         `
         <div class="livro">
-        <img class="livro__imagens" src="${livro.imagem}" alt="${livro.alt}" />
+        <img class="${disponibilidade}" src="${livro.imagem}" alt="${livro.alt}" />
       <h2 class="livro__titulo">
         ${livro.titulo}
       </h2>
@@ -28,6 +40,9 @@ function exibirOsLivrosNaTela(listaDeLivros){
       </div>
         `
     });
+
+    //diz qual livro tem disponibilidade
+   
 
     }
 
