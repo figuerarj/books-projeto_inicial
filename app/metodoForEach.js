@@ -1,10 +1,11 @@
 //pega a section que tem a ID -livros-, cria o portal entre o HTML e o JS
 const elementoParaInserirLivros = document.getElementById('livros')
 
+const elementoComValorTotalDeLivrosDisponiveis = document.getElementById('valor_total_livros_disponiveis')
 
 //inseri divs com as informacoes contidas no JSON dentro da section -livros-
 function exibirOsLivrosNaTela(listaDeLivros){
-    
+  elementoComValorTotalDeLivrosDisponiveis.innerHTML = " "
   elementoParaInserirLivros.innerHTML = ''
   //percorre cada array da varivel -livros- buscando os dados 
     //depois que tiver os dados ele monta a div para ser inserida dentro da section -livros-
