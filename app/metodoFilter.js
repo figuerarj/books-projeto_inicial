@@ -13,11 +13,28 @@ function filtrarLivros(){
     //realiza o filtro usando a categoria do livro
     //atualizacao - se a categoria for disponivel entao: faz filtro com os livros maiores que 0 quantidade se nao faco o filtro com base na categoria. 
     //se for disponivel faz 1 se nao faz 2.
-    let livrosFiltrados = categoria == 'disponivel' ? livros.filter(livro => livro.quantidade > 0) : livros.filter(livro => livro.categoria == categoria )
+    let livrosFiltrados = categoria == 'disponivel' ? filtrarPorDisponibilidade() : filtrarPorCategoria(categoria)
     exibirOsLivrosNaTela(livrosFiltrados)
     //console.table(livrosFiltrados)
+    if (categoria == "disponivel"){
+        exibirValorTotalDosLivrosDisponiveisNaTela()
+    }
+
+    function exibirValorTotalDosLivrosDisponiveisNaTela(){
+        elementoComValorTotalDeLivrosDisponiveis.innerHTML = `<div class="livros__disponiveis">
+        <p>Todos os livros disponíveis por R$ <span id="valor">299,00</span></p>
+      </div>`
+    }
 }
 
+
+function filtrarPorCategoria(categoria) {
+    return livros.filter(livro => livro.categoria == categoria)
+}
+
+function filtrarPorDisponibilidade() {
+    return livros.filter(livro => livro.quantidade > 0)
+}
 //export default filtrarLivros
 
 // import exibirOsLivrosNaTela from "./metodoForEach.js"
