@@ -11,7 +11,9 @@ function filtrarLivros(){
     //pega o valor dentro do elementoBtn. Dentro de cada elemento no HTML tem um value já especificado.
     const categoria = elementoBtn.value
     //realiza o filtro usando a categoria do livro
-    let livrosFiltrados = livros.filter(livro => livro.categoria == categoria )
+    //atualizacao - se a categoria for disponivel entao: faz filtro com os livros maiores que 0 quantidade se nao faco o filtro com base na categoria. 
+    //se for disponivel faz 1 se nao faz 2.
+    let livrosFiltrados = categoria == 'disponivel' ? livros.filter(livro => livro.quantidade > 0) : livros.filter(livro => livro.categoria == categoria )
     exibirOsLivrosNaTela(livrosFiltrados)
     //console.table(livrosFiltrados)
 }
